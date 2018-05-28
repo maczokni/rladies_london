@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Reka Solymosi" />
+  <title>Fighting crime (and other bad things) on the transport network</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reka_rmanch_pres_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+<link rel="stylesheet" href="reka_rmanch_pres_files/reveal.js-3.3.0.1/css/theme/simple.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;	}
+    .reveal h4 { font-size: 1em;	}
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+    <link rel="stylesheet" href="styles.css"/>
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+	/* SECTION 1: Set default width, margin, float, and
+	   background. This prevents elements from extending
+	   beyond the edge of the printed page, and prevents
+	   unnecessary background images from printing */
+	html {
+		background: #fff;
+		width: auto;
+		height: auto;
+		overflow: visible;
+	}
+	body {
+		background: #fff;
+		font-size: 20pt;
+		width: auto;
+		height: auto;
+		border: 0;
+		margin: 0 5%;
+		padding: 0;
+		overflow: visible;
+		float: none !important;
+	}
+
+	/* SECTION 2: Remove any elements not needed in print.
+	   This would include navigation, ads, sidebars, etc. */
+	.nestedarrow,
+	.controls,
+	.fork-reveal,
+	.share-reveal,
+	.state-background,
+	.reveal .progress,
+	.reveal .backgrounds {
+		display: none !important;
+	}
+
+	/* SECTION 3: Set body font face, size, and color.
+	   Consider using a serif font for readability. */
+	body, p, td, li, div {
+		font-size: 20pt!important;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		color: #000;
+	}
+
+	/* SECTION 4: Set heading font face, sizes, and color.
+	   Differentiate your headings from your body text.
+	   Perhaps use a large sans-serif for distinction. */
+	h1,h2,h3,h4,h5,h6 {
+		color: #000!important;
+		height: auto;
+		line-height: normal;
+		font-family: Georgia, "Times New Roman", Times, serif !important;
+		text-shadow: 0 0 0 #000 !important;
+		text-align: left;
+		letter-spacing: normal;
+	}
+	/* Need to reduce the size of the fonts for printing */
+	h1 { font-size: 28pt !important;  }
+	h2 { font-size: 24pt !important; }
+	h3 { font-size: 22pt !important; }
+	h4 { font-size: 22pt !important; font-variant: small-caps; }
+	h5 { font-size: 21pt !important; }
+	h6 { font-size: 20pt !important; font-style: italic; }
+
+	/* SECTION 5: Make hyperlinks more usable.
+	   Ensure links are underlined, and consider appending
+	   the URL to the end of the link for usability. */
+	a:link,
+	a:visited {
+		color: #000 !important;
+		font-weight: bold;
+		text-decoration: underline;
+	}
+	/*
+	.reveal a:link:after,
+	.reveal a:visited:after {
+		content: " (" attr(href) ") ";
+		color: #222 !important;
+		font-size: 90%;
+	}
+	*/
+
+
+	/* SECTION 6: more reveal.js specific additions by @skypanther */
+	ul, ol, div, p {
+		visibility: visible;
+		position: static;
+		width: auto;
+		height: auto;
+		display: block;
+		overflow: visible;
+		margin: 0;
+		text-align: left !important;
+	}
+	.reveal pre,
+	.reveal table {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.reveal pre code {
+		padding: 20px;
+		border: 1px solid #ddd;
+	}
+	.reveal blockquote {
+		margin: 20px 0;
+	}
+	.reveal .slides {
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 0 !important;
+		zoom: 1 !important;
+
+		overflow: visible !important;
+		display: block !important;
+
+		text-align: left !important;
+		-webkit-perspective: none;
+		   -moz-perspective: none;
+		    -ms-perspective: none;
+		        perspective: none;
+
+		-webkit-perspective-origin: 50% 50%;
+		   -moz-perspective-origin: 50% 50%;
+		    -ms-perspective-origin: 50% 50%;
+		        perspective-origin: 50% 50%;
+	}
+	.reveal .slides section {
+		visibility: visible !important;
+		position: static !important;
+		width: auto !important;
+		height: auto !important;
+		display: block !important;
+		overflow: visible !important;
+
+		left: 0 !important;
+		top: 0 !important;
+		margin-left: 0 !important;
+		margin-top: 0 !important;
+		padding: 60px 20px !important;
+		z-index: auto !important;
+
+		opacity: 1 !important;
+
+		page-break-after: always !important;
+
+		-webkit-transform-style: flat !important;
+		   -moz-transform-style: flat !important;
+		    -ms-transform-style: flat !important;
+		        transform-style: flat !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+
+		-webkit-transition: none !important;
+		   -moz-transition: none !important;
+		    -ms-transition: none !important;
+		        transition: none !important;
+	}
+	.reveal .slides section.stack {
+		padding: 0 !important;
+	}
+	.reveal section:last-of-type {
+		page-break-after: avoid !important;
+	}
+	.reveal section .fragment {
+		opacity: 1 !important;
+		visibility: visible !important;
+
+		-webkit-transform: none !important;
+		   -moz-transform: none !important;
+		    -ms-transform: none !important;
+		        transform: none !important;
+	}
+	.reveal section img {
+		display: block;
+		margin: 15px 0px;
+		background: rgba(255,255,255,1);
+		border: 1px solid #666;
+		box-shadow: none;
+	}
+
+	.reveal section small {
+		font-size: 0.8em;
+	}
+
+}  
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+    
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+	-webkit-print-color-adjust: exact;
+}
+
+body {
+	margin: 0 auto !important;
+	border: 0;
+	padding: 0;
+	float: none !important;
+	overflow: visible;
+}
+
+html {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+	display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+	overflow: hidden !important;
+	font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+	visibility: visible;
+	position: static;
+	width: auto;
+	height: auto;
+	display: block;
+	overflow: visible;
+	margin: auto;
+}
+.reveal {
+	width: auto !important;
+	height: auto !important;
+	overflow: hidden !important;
+}
+.reveal .slides {
+	position: static;
+	width: 100%;
+	height: auto;
+
+	left: auto;
+	top: auto;
+	margin: 0 !important;
+	padding: 0 !important;
+
+	overflow: visible;
+	display: block;
+
+	-webkit-perspective: none;
+	   -moz-perspective: none;
+	    -ms-perspective: none;
+	        perspective: none;
+
+	-webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+	   -moz-perspective-origin: 50% 50%;
+	    -ms-perspective-origin: 50% 50%;
+	        perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+	page-break-after: always !important;
+
+	visibility: visible !important;
+	position: relative !important;
+	display: block !important;
+	position: relative !important;
+
+	margin: 0 !important;
+	padding: 0 !important;
+	box-sizing: border-box !important;
+	min-height: 1px;
+
+	opacity: 1 !important;
+
+	-webkit-transform-style: flat !important;
+	   -moz-transform-style: flat !important;
+	    -ms-transform-style: flat !important;
+	        transform-style: flat !important;
+
+	-webkit-transform: none !important;
+	   -moz-transform: none !important;
+	    -ms-transform: none !important;
+	        transform: none !important;
+}
+
+.reveal section.stack {
+	margin: 0 !important;
+	padding: 0 !important;
+	page-break-after: avoid !important;
+	height: auto !important;
+	min-height: auto !important;
+}
+
+.reveal img {
+	box-shadow: none;
+}
+
+.reveal .roll {
+	overflow: visible;
+	line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+	display: block !important;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+	position: relative;
+	z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+	display: block;
+	width: 100%;
+	max-height: none;
+	left: auto;
+	top: auto;
+	z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+	display: block;
+	position: absolute;
+	font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Fighting crime (and other bad things) on the transport network</h1>
+    <h2 class="author">Reka Solymosi</h2>
+    <h3 class="date">5/14/2017</h3>
+</section>
+
+<section id="section" class="slide level2">
+<h1></h1>
+<h3>
+The transport system in London is a low-crime environment, and the risk of becoming a victim of crime while travelling on it is low.
+</h1>
+<iframe src="https://giphy.com/embed/3o7TKMnesxRQkgHQ6k" width="480" height="330" frameBorder="0" class="giphy-embed" allowFullScreen>
+</iframe>
+<p><p1><a href="https://giphy.com/gifs/london-buzzfeed-tube-3o7TKMnesxRQkgHQ6k">source</a></p1></p>
+</section>
+<section id="section-1" class="slide level2">
+<h1></h1>
+<h4>
+In fact, the rate is under 8 crimes per 1 million passenger journeys
+</h4>
+<p><img src="reka_rmanch_pres_files/figure-revealjs/unnamed-chunk-1-1.png" width="768" /></p>
+<p><p1><a href="http://content.tfl.gov.uk/crime-and-antisocial-behaviour-bulletin-q31617.pdf">source</a></p1></p>
+</section>
+<section id="section-2" class="slide level2">
+<h1></h1>
+<h3>
+But…
+</h3>
+<iframe src="https://giphy.com/embed/6U4v1NPgaonDi" width="480" height="269" frameBorder="0" class="giphy-embed" allowFullScreen>
+</iframe>
+<p><p1><a href="https://giphy.com/gifs/bird-chips-running-6U4v1NPgaonDi">source</a></p1></p>
+<p>
+Crime, antisocial behaviour and the fear of crime can affect on people’s willingness to travel and access jobs and services.
+</p>
+</section>
+<section id="section-3" class="slide level2">
+<h1></h1>
+<h3>
+So we turn to data…
+</h3>
+<iframe src="https://giphy.com/embed/xUA7aV9ZmC8jN1nboc" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen>
+</iframe>
+<p><p1><a href="https://giphy.com/gifs/batman-lego-gordon-xUA7aV9ZmC8jN1nboc">source</a></p1></p>
+</section>
+<section id="section-4" class="slide level2">
+<h1></h1>
+<h3>
+4 main ways we use(d) R
+</h3>
+<ul>
+<li>Data cleaning</li>
+<li>Analysis</li>
+<li>Visualisation and mapping</li>
+<li>Shiny apps for dashboards</li>
+</ul>
+</section>
+<section id="but-first" class="slide level2">
+<h1>BUT FIRST</h1>
+<h3>
+Working on R in closed systems
+</h3>
+<ul>
+<li>Installation/ update issues</li>
+<li>Downloading packages</li>
+<li>Security concerns</li>
+<li>Training support
+<ul>
+<li><a href="https://github.com/RClubCoders">User Group</a></li>
+<li>Lunchtime sessions</li>
+</ul></li>
+</ul>
+</section>
+<section id="example-tfl-api" class="slide level2">
+<h1>Example: TfL API</h1>
+<h3>
+Normally:
+</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(jsonlite)
+
+query_url &lt;-<span class="st"> &quot;https://api.tfl.gov.uk/AccidentStats/2015?app_id=your_app_id_here&amp;app_key=your_app_key_here&quot;</span>
+
+d &lt;-<span class="st"> </span><span class="kw">fromJSON</span>(query_url)
+
+accidents &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">lapply</span>(<span class="kw">as.data.frame</span>(d), as.character), <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</code></pre></div>
+</section>
+<section id="section-5" class="slide level2">
+<h1></h1>
+<h3>
+From inside firewall:
+</h3>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(jsonlite)
+
+query_url &lt;-<span class="st"> &quot;https://api.tfl.gov.uk/AccidentStats/2015?app_id=your_app_id_here&amp;app_key=your_app_key_here&quot;</span>
+
+l &lt;-<span class="st"> </span><span class="kw">readLines</span>(query_url)
+
+d &lt;-<span class="st"> </span><span class="kw">fromJSON</span>(l)
+
+accidents &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">lapply</span>(<span class="kw">as.data.frame</span>(d), as.character), <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</code></pre></div>
+</section>
+<section id="section-6" class="slide level2">
+<h1></h1>
+<h3>
+But once we got it…
+</h3>
+</section>
+<section id="choropleth-maps" class="slide level2">
+<h1>Choropleth maps</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)</code></pre></div>
+<p><img src="ggplot2.png" width="800px" /></p>
+</section>
+<section id="point-pattern-analysis" class="slide level2">
+<h1>Point pattern analysis</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(spatstat)</code></pre></div>
+<p><img src="spatstat.png" width="800px" /></p>
+</section>
+<section id="spatial-autocorrelation" class="slide level2">
+<h1>Spatial autocorrelation</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(spdep)</code></pre></div>
+<p><img src="spdep.png" width="800px" /></p>
+</section>
+<section id="aoristic-analysis" class="slide level2">
+<h1>Aoristic analysis</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(aoristic)</code></pre></div>
+<p><img src="aoristic.png" width="800px" /></p>
+</section>
+<section id="other-types-of-analysis" class="slide level2">
+<h1>Other types of analysis</h1>
+<ul>
+<li>Geographic profiling - Rgeoprofile</li>
+<li>Crime series identification - crimelinkage</li>
+<li>Text mining - tm</li>
+<li>Network analysis - igraph</li>
+</ul>
+</section>
+<section id="shiny-dashboards" class="slide level2">
+<h1>Shiny dashboards</h1>
+<ul>
+<li>Pro tip: the best way to get senior management on board!</li>
+<li>Large initial time investment, but soon pays off</li>
+<li>Internal hosting can be a challenge</li>
+</ul>
+</section>
+<section id="estimate-harm" class="slide level2">
+<h1>Estimate ‘harm’</h1>
+<p><img src="crimeHarm.png" width="800px" /></p>
+</section>
+<section id="analyse-tweets" class="slide level2">
+<h1>Analyse tweets</h1>
+<p><img src="nightTubeTweets.png" width="800px" /></p>
+</section>
+<section id="track-trends" class="slide level2">
+<h1>Track trends</h1>
+<p><img src="performanceTrends.png" width="800px" /></p>
+</section>
+<section id="monitor-fare-evasion" class="slide level2">
+<h1>Monitor fare evasion</h1>
+<p><img src="beApp.png" width="800px" /></p>
+</section>
+<section id="tfl-open-data" class="slide level2">
+<h1>TfL Open Data</h1>
+<p><a href="https://tfl.gov.uk/info-for/open-data-users/" class="uri">https://tfl.gov.uk/info-for/open-data-users/</a></p>
+<p><img src="img/open_data.png" /></p>
+</section>
+<section id="lots-of-topics" class="slide level2">
+<h1>Lots of topics</h1>
+<p><img src="img/topics.png" /></p>
+</section>
+<section id="get-accstats" class="slide level2">
+<h1>Get AccStats</h1>
+<p><img src="img/get_accstats_data.gif" /></p>
+</section>
+<section id="in-r-set-up-api" class="slide level2">
+<h1>In R: Set up API</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(httr)
+<span class="kw">library</span>(jsonlite)
+
+app_key &lt;-<span class="st"> &quot;put app key here&quot;</span>
+app_id &lt;-<span class="st"> &quot;put app id here&quot;</span>
+year &lt;-<span class="st"> &quot;2015&quot;</span></code></pre></div>
+</section>
+<section id="in-r-build-query-and-get-data" class="slide level2">
+<h1>In R: Build query and get data</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">queryString &lt;-<span class="st"> </span><span class="kw">paste0</span>(<span class="st">&quot;https://api.tfl.gov.uk/AccidentStats/&quot;</span>,
+                      year,
+                      <span class="st">&quot;?app_id=&quot;</span>,
+                      app_id,
+                      <span class="st">&quot;&amp;app_key=&quot;</span>,
+                      app_key)
+
+l &lt;-<span class="st"> </span><span class="kw">readLines</span>(queryString)</code></pre></div>
+<pre><code>## Warning in readLines(queryString): incomplete final line
+## found on &#39;https://api.tfl.gov.uk/AccidentStats/2015?
+## app_id=0f1de667&amp;app_key=6c47ac149cfec9ccb6bf32b953a85dd3&#39;</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d &lt;-<span class="st"> </span><span class="kw">fromJSON</span>(l)
+
+accidents &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">lapply</span>(<span class="kw">as.data.frame</span>(d), as.character), <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</code></pre></div>
+</section>
+<section id="in-r" class="slide level2">
+<h1>In R</h1>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(accidents, <span class="dt">n =</span> <span class="dv">1</span>)</code></pre></div>
+<pre><code>##                                                                                      X.type
+## 1 Tfl.Api.Presentation.Entities.AccidentStats.AccidentDetail, Tfl.Api.Presentation.Entities
+##       id       lat       lon                                  location
+## 1 243816 51.528712 -0.202581 Ashmore Road, junction with Shirland Road
+##                   date severity             borough
+## 1 2015-06-04T20:25:00Z   Slight City of Westminster
+##                                                                                                                                                                                           casualties
+## 1 list(`$type` = &quot;Tfl.Api.Presentation.Entities.AccidentStats.Casualty, Tfl.Api.Presentation.Entities&quot;, age = 47, class = &quot;Pedestrian&quot;, severity = &quot;Slight&quot;, mode = &quot;Pedestrian&quot;, ageBand = &quot;Adult&quot;)
+##                                                                                                             vehicles
+## 1 list(`$type` = &quot;Tfl.Api.Presentation.Entities.AccidentStats.Vehicle, Tfl.Api.Presentation.Entities&quot;, type = &quot;Car&quot;)</code></pre>
+</section>
+<section id="visualise" class="slide level2">
+<h1>Visualise</h1>
+<p><a href="https://rekarrr.shinyapps.io/tfl2015accstats/" class="uri">https://rekarrr.shinyapps.io/tfl2015accstats/</a></p>
+</section>
+<section id="get-in-touch" class="slide level2">
+<h1>Get in touch!</h1>
+<ul>
+<li>Email: <a href="mailto:reka.solymosi@manchester.ac.uk">reka.solymosi@manchester.ac.uk</a></li>
+<li>Twitter: <span class="citation" data-cites="r_solymosi">@r_solymosi</span></li>
+<li>Methods at Manchester summer school
+<ul>
+<li><a href="http://www.methods.manchester.ac.uk/connect/events/summer-school/courses/" class="uri">http://www.methods.manchester.ac.uk/connect/events/summer-school/courses/</a></li>
+<li>Select: ‘Getting started with R…’</li>
+</ul></li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="reka_rmanch_pres_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="reka_rmanch_pres_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Push each slide change to the browser history
+        history: true,
+        // Vertical centering of slides
+        center: false,
+        // Transition style
+        transition: 'slide', // none/fade/slide/convex/concave/zoom
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {  
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
