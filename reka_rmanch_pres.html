@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="generator" content="pandoc">
   <meta name="author" content="Reka Solymosi" />
-  <title>Fighting crime (and other bad things) on the transport network</title>
+  <title>London Data at RLadies London</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -487,9 +487,9 @@ document.getElementsByTagName('head')[0].appendChild(style);
     <div class="slides">
 
 <section>
-    <h1 class="title">Fighting crime (and other bad things) on the transport network</h1>
+    <h1 class="title">London Data at RLadies London</h1>
     <h2 class="author">Reka Solymosi</h2>
-    <h3 class="date">5/14/2017</h3>
+    <h3 class="date">29/05/2018</h3>
 </section>
 
 <section id="section" class="slide level2">
@@ -595,22 +595,22 @@ But once we got it…
 <section id="choropleth-maps" class="slide level2">
 <h1>Choropleth maps</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(ggplot2)</code></pre></div>
-<p><img src="ggplot2.png" width="800px" /></p>
+<p><img src="img/ggplot2.png" width="800px" /></p>
 </section>
 <section id="point-pattern-analysis" class="slide level2">
 <h1>Point pattern analysis</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(spatstat)</code></pre></div>
-<p><img src="spatstat.png" width="800px" /></p>
+<p><img src="img/spatstat.png" width="800px" /></p>
 </section>
 <section id="spatial-autocorrelation" class="slide level2">
 <h1>Spatial autocorrelation</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(spdep)</code></pre></div>
-<p><img src="spdep.png" width="800px" /></p>
+<p><img src="img/spdep.png" width="800px" /></p>
 </section>
 <section id="aoristic-analysis" class="slide level2">
 <h1>Aoristic analysis</h1>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(aoristic)</code></pre></div>
-<p><img src="aoristic.png" width="800px" /></p>
+<p><img src="img/aoristic.png" width="800px" /></p>
 </section>
 <section id="other-types-of-analysis" class="slide level2">
 <h1>Other types of analysis</h1>
@@ -631,19 +631,19 @@ But once we got it…
 </section>
 <section id="estimate-harm" class="slide level2">
 <h1>Estimate ‘harm’</h1>
-<p><img src="crimeHarm.png" width="800px" /></p>
+<p><img src="img/crimeHarm.png" width="800px" /></p>
 </section>
 <section id="analyse-tweets" class="slide level2">
 <h1>Analyse tweets</h1>
-<p><img src="nightTubeTweets.png" width="800px" /></p>
+<p><img src="img/nightTubeTweets.png" width="800px" /></p>
 </section>
 <section id="track-trends" class="slide level2">
 <h1>Track trends</h1>
-<p><img src="performanceTrends.png" width="800px" /></p>
+<p><img src="img/performanceTrends.png" width="800px" /></p>
 </section>
 <section id="monitor-fare-evasion" class="slide level2">
 <h1>Monitor fare evasion</h1>
-<p><img src="beApp.png" width="800px" /></p>
+<p><img src="img/beApp.png" width="800px" /></p>
 </section>
 <section id="tfl-open-data" class="slide level2">
 <h1>TfL Open Data</h1>
@@ -676,27 +676,85 @@ year &lt;-<span class="st"> &quot;2015&quot;</span></code></pre></div>
                       <span class="st">&quot;&amp;app_key=&quot;</span>,
                       app_key)
 
-l &lt;-<span class="st"> </span><span class="kw">readLines</span>(queryString)</code></pre></div>
-<pre><code>## Warning in readLines(queryString): incomplete final line
-## found on &#39;https://api.tfl.gov.uk/AccidentStats/2015?
-## app_id=0f1de667&amp;app_key=6c47ac149cfec9ccb6bf32b953a85dd3&#39;</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">d &lt;-<span class="st"> </span><span class="kw">fromJSON</span>(l)
+l &lt;-<span class="st"> </span><span class="kw">readLines</span>(queryString)
+
+d &lt;-<span class="st"> </span><span class="kw">fromJSON</span>(l)
 
 accidents &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="kw">lapply</span>(<span class="kw">as.data.frame</span>(d), as.character), <span class="dt">stringsAsFactors=</span><span class="ot">FALSE</span>)</code></pre></div>
 </section>
 <section id="in-r" class="slide level2">
 <h1>In R</h1>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">head</span>(accidents, <span class="dt">n =</span> <span class="dv">1</span>)</code></pre></div>
-<pre><code>##                                                                                      X.type
-## 1 Tfl.Api.Presentation.Entities.AccidentStats.AccidentDetail, Tfl.Api.Presentation.Entities
-##       id       lat       lon                                  location
-## 1 243816 51.528712 -0.202581 Ashmore Road, junction with Shirland Road
-##                   date severity             borough
-## 1 2015-06-04T20:25:00Z   Slight City of Westminster
-##                                                                                                                                                                                           casualties
-## 1 list(`$type` = &quot;Tfl.Api.Presentation.Entities.AccidentStats.Casualty, Tfl.Api.Presentation.Entities&quot;, age = 47, class = &quot;Pedestrian&quot;, severity = &quot;Slight&quot;, mode = &quot;Pedestrian&quot;, ageBand = &quot;Adult&quot;)
-##                                                                                                             vehicles
-## 1 list(`$type` = &quot;Tfl.Api.Presentation.Entities.AccidentStats.Vehicle, Tfl.Api.Presentation.Entities&quot;, type = &quot;Car&quot;)</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">knitr::<span class="kw">kable</span>(<span class="kw">head</span>(accidents, <span class="dt">n =</span> <span class="dv">1</span>), <span class="st">&quot;html&quot;</span>)</code></pre></div>
+<table>
+<thead>
+<tr>
+<th style="text-align:left;">
+X.type
+</th>
+<th style="text-align:left;">
+id
+</th>
+<th style="text-align:left;">
+lat
+</th>
+<th style="text-align:left;">
+lon
+</th>
+<th style="text-align:left;">
+location
+</th>
+<th style="text-align:left;">
+date
+</th>
+<th style="text-align:left;">
+severity
+</th>
+<th style="text-align:left;">
+borough
+</th>
+<th style="text-align:left;">
+casualties
+</th>
+<th style="text-align:left;">
+vehicles
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Tfl.Api.Presentation.Entities.AccidentStats.AccidentDetail, Tfl.Api.Presentation.Entities
+</td>
+<td style="text-align:left;">
+243816
+</td>
+<td style="text-align:left;">
+51.528712
+</td>
+<td style="text-align:left;">
+-0.202581
+</td>
+<td style="text-align:left;">
+Ashmore Road, junction with Shirland Road
+</td>
+<td style="text-align:left;">
+2015-06-04T20:25:00Z
+</td>
+<td style="text-align:left;">
+Slight
+</td>
+<td style="text-align:left;">
+City of Westminster
+</td>
+<td style="text-align:left;">
+list(<code>$type</code> = “Tfl.Api.Presentation.Entities.AccidentStats.Casualty, Tfl.Api.Presentation.Entities”, age = 47, class = “Pedestrian”, severity = “Slight”, mode = “Pedestrian”, ageBand = “Adult”)
+</td>
+<td style="text-align:left;">
+list(<code>$type</code> = “Tfl.Api.Presentation.Entities.AccidentStats.Vehicle, Tfl.Api.Presentation.Entities”, type = “Car”)
+</td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="visualise" class="slide level2">
 <h1>Visualise</h1>

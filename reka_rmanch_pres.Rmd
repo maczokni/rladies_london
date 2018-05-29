@@ -1,7 +1,7 @@
 ---
-title: "Fighting crime (and other bad things) on the transport network"
+title: "London Data at RLadies London"
 author: "Reka Solymosi"
-date: "5/14/2017"
+date: "29/05/2018"
 output:
   revealjs::revealjs_presentation:
     theme: simple
@@ -123,7 +123,7 @@ library(ggplot2)
 ```
 
 ```{r, out.width = "800px", echo=FALSE}
-knitr::include_graphics('ggplot2.png')
+knitr::include_graphics('img/ggplot2.png')
 ```
 
 ##Point pattern analysis
@@ -133,7 +133,7 @@ library(spatstat)
 ```
 
 ```{r, out.width = "800px", echo=FALSE}
-knitr::include_graphics('spatstat.png')
+knitr::include_graphics('img/spatstat.png')
 ```
 
 ##Spatial autocorrelation
@@ -143,7 +143,7 @@ library(spdep)
 ```
 
 ```{r, out.width = "800px", echo=FALSE}
-knitr::include_graphics('spdep.png')
+knitr::include_graphics('img/spdep.png')
 ```
 
 ##Aoristic analysis
@@ -153,7 +153,7 @@ library(aoristic)
 ```
 
 ```{r, out.width = "800px", echo=FALSE}
-knitr::include_graphics('aoristic.png')
+knitr::include_graphics('img/aoristic.png')
 ```
 
 ##Other types of analysis
@@ -171,23 +171,23 @@ knitr::include_graphics('aoristic.png')
 
 ##Estimate 'harm'
 ```{r, out.width = "800px", echo=FALSE}
-knitr::include_graphics('crimeHarm.png')
+knitr::include_graphics('img/crimeHarm.png')
 ```
 
 ##Analyse tweets
 ```{r, out.width = "800px", echo=FALSE}
-knitr::include_graphics('nightTubeTweets.png')
+knitr::include_graphics('img/nightTubeTweets.png')
 ```
 
 ##Track trends
 ```{r, out.width = "800px", echo=FALSE}
-knitr::include_graphics('performanceTrends.png')
+knitr::include_graphics('img/performanceTrends.png')
 ```
 
 ##Monitor fare evasion
 
 ```{r, out.width = "800px", echo=FALSE}
-knitr::include_graphics('beApp.png')
+knitr::include_graphics('img/beApp.png')
 ```
 
 ##TfL Open Data
@@ -223,7 +223,7 @@ app_id <- "0f1de667"
 
 ##In R: Build query and get data
 
-```{r, echo=TRUE}
+```{r, echo=TRUE, warning=FALSE, error=FALSE}
 queryString <- paste0("https://api.tfl.gov.uk/AccidentStats/",
                       year,
                       "?app_id=",
@@ -242,7 +242,7 @@ accidents <- data.frame(lapply(as.data.frame(d), as.character), stringsAsFactors
 ##In R
 
 ```{r, echo=TRUE}
-head(accidents, n = 1)
+knitr::kable(head(accidents, n = 1), "html")
 
 ```
 
